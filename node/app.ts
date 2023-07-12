@@ -15,11 +15,11 @@ const vapidKeys = {
 };
 // get client subscription config from db
 const subscription = {
-    endpoint: 'https://fcm.googleapis.com/fcm/send/di-IvdTmn84:APA91bF6XsArB6TitcoGLFESJkcDFHxxCVTRadn3I6VHuR5c3z15RLYjwWwsO-ZoPGKxP8S153iDLddOCof8UKfPOqGHpMbMsn6XA2JDrhRAREVevJ5wJi2ub3_QCjBQAjc0t27QoSfi',
+    endpoint: 'https://fcm.googleapis.com/fcm/send/c0xBceZWNTY:APA91bFghyC9TDaXK_n_JM3lEHJn-nlnTRY5nF4DkNESOd-47tU4kDC0MaiZi9YI42DoFW7f5_eDvYRIpsNyHbiaoK52VQ858ghPZ6WHQaYHictZaB1kbJasnxVJ2DE-hGMpZXQXROaL',
     expirationTime: null,
     keys: {
-        auth: 'ZlEyUmZGMqKttxsfpex2Mw',
-        p256dh: 'BHAPi98QhqHDwcdI7h8xHwiDwfZUdhu_v0p1g9cZgjgbrmXGq1JMZdN2XY6qmqZ-BagSR3ZOKQiWU18_7_YXu8c',
+        auth: 'PTdtHFrcxU7Q-Fyx74ia-Q',
+        p256dh: 'BOGUvAhqcROeaN1FCXVd1E-y3aE01eA-08xk0aypYOH3zvfFi2Dc4Kro7dSafauDFlrYxlQYKlr5d76TP24mF_Y',
     },
 };
 
@@ -69,6 +69,7 @@ let nb = 0;
 // send notification
 app.get('/', (req, res) => {
     io.emit('notif', ++nb);
+    webpush.sendNotification(subscription, JSON.stringify(payload), options);
     res.send('Hello World!');
 });
 
